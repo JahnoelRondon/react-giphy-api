@@ -1,4 +1,15 @@
-.App {
+body {
   text-align: center;
+  background-color: black;
 }
 
+.flex {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+.flex div {
+  margin: 10px;
+  border-radius: 10px;
+}

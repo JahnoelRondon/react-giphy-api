@@ -7,6 +7,7 @@ class GiphyInfo extends Component{
         // console.log(this.props.giphs)
         return (
             <Container >
+                <div className="flex">
                 {
                     this.props.giphs.map(giph => (
                         <div key={giph.id}>
@@ -15,6 +16,7 @@ class GiphyInfo extends Component{
                         
                     ))
                 }
+                </div>
             </Container>
         )        
     }
