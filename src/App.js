@@ -14,14 +14,41 @@ class App extends Component {
       giphyTitle: '',
       searchEndPoint: ''
     }
+    this.handleChange = this.handleChange.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
+  }
+
+  handleChange(event){
+    this.setState({
+      giphyTitle: event.target.value
+    })
+  }
+
+  handleSubmit(event){
+    event.preventDefault();
+    this.setState({
+      searchEndPoint: this.state.baseurl + this.state.api_key + this.state.query + this.state.giphyTitle 
+    }, () => {
+      fetch(this.state.searchEndPoint)
+      .then(res => res.json())
+      .then(json => this.setState({
+          giphs: json.data,
+          giphyTitle: ''
+      }))
+    }) 
   }
 
   render() {
-    console.log(this)
     return (
-      <div className="App">
-
-      </div>
+      <>
+        <form onSubmit={this.handleSubmit}>
+          <input type="text" placeholder="giphy title" value={this.state.giphyTitle} onChange={this.handleChange}/>
+          <input type="submit" />
+        </form>
+        {
+          this.state.giphs ? <GiphyInfo giphs={this.state.giphs} /> : ''
+        }
+      </>
     );    
   }
 
