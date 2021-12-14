@@ -8,8 +8,8 @@ class App extends Component {
     super()
 
     this.state = {
-      baseurl: 'https://api.giphy.com/v1/gifs/search?',
-      api_key: 'api_key=' + '4B9b9lcflmEmNTgHwvULf4AIhhLNYARY',
+      baseurl: process.env.REACT_APP_BASEURL,
+      api_key: 'api_key=' + process.env.REACT_APP_APIKEY,
       query: '&q=',
       giphyTitle: '',
       searchEndPoint: ''
